@@ -61,17 +61,17 @@
 			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 
-		<!-- MySQL -->
+		<!-- PostgreSQL -->
 		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Flyway -->
+		<!-- Flyway (flyway-core incluye soporte nativo para PostgreSQL) -->
 		<dependency>
 			<groupId>org.flywaydb</groupId>
-			<artifactId>flyway-mysql</artifactId>
+			<artifactId>flyway-core</artifactId>
 		</dependency>
 
 		<!-- JWT -->
