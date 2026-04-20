@@ -1,0 +1,35 @@
+package com.areswayne.flowdesk.domain.workspace;
+
+import com.areswayne.flowdesk.domain.user.User;
+import com.areswayne.flowdesk.shared.enums.Role;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.UUID;
+
+@Entity
+@Table(
+    name = "workspace_members",
+    uniqueConstraints = @UniqueConstraint(columnNames = {"workspace_id", "user_id"})
+)
+@Getter @Setter
+@NoArgsConstructor @AllArgsConstructor
+@Builder
+public class WorkspaceMember {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "workspace_id", nullable = false)
+    private Workspace workspace;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, length = 20)
+    private Role role;
+}
